@@ -6,7 +6,7 @@ let win: BrowserWindow | null
 const createWindow = () => {
   win = new BrowserWindow({
     width: 1000,
-    height: 600,
+    height: 800,
     // frame:false, // 无边框且禁止拖动
     // transparent: true, // 窗口是否透明 ----- 当打开开发者工具时，窗口将不透明
     // autoHideMenuBar: true,  //  窗口菜单栏是否隐藏 ----- 用户单击 Alt 键时显示
@@ -21,6 +21,7 @@ const createWindow = () => {
       webviewTag: true, // 解决webview无法显示问题
     },
   })
+  win.maximizable = true
 
   if (process.env.NODE_ENV != 'development') {  //生产环境下 加载
     win.loadFile('./dist/index.html')
@@ -31,10 +32,10 @@ const createWindow = () => {
      * win.webContents.openDevTools()
      * 指定打开的位置状态 {mode:'xxxx'} left、right、bottom、detach
     */
-    win.webContents.openDevTools({ mode: 'detach' })
+    // win.webContents.openDevTools({ mode: 'detach' })
+    win.webContents.openDevTools()
     win.loadURL(`${process.env['VITE_DEV_SERVER_URL']}`).then(() => {})
   }
-
   
   // 在加载页面时，渲染进程第一次完成绘制时，如果窗口还没有被显示，渲染进程会发出 ready-to-show 事件
   win.on('ready-to-show', () => {

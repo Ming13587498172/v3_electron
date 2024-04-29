@@ -29,13 +29,15 @@ export default defineConfig({
     }
   },
   server: {
+    host: "localhost",
+    hmr: true,
     proxy: {
       '/api': {
         target: '',
         changeOrigin: true,
         rewrite: path=>path.replace(/^\/api/, '')
       }
-    }
+    },
   },
    css: {
     // css预处理器
