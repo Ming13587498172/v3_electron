@@ -8,6 +8,8 @@ import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 // 引入pxtorem插件
 import postCssPxToRem from "postcss-pxtorem"
+// mock
+import { viteMockServe } from 'vite-plugin-mock'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -23,6 +25,12 @@ export default defineConfig({
           importStyle: false,
         }),
       ],
+    }),
+    // mock服务
+    viteMockServe({
+      supportTs: true,
+      logger: false,
+      mockPath: "./src/mock/",
     }),
   ],
   base: './',

@@ -2,10 +2,12 @@
   <div class="layout-box">
     <a-layout class="layout">
       <a-layout-header class="layout-header">
-        <LayouHeader></LayouHeader>
+        <layout-header></layout-header>
       </a-layout-header>
       <a-layout>
-        <a-layout-sider class="layout-sider">Sider</a-layout-sider>
+        <a-layout-sider class="layout-sider">
+          <layout-sider></layout-sider>
+        </a-layout-sider>
         <a-layout-content class="layout-content">
           <router-view></router-view>
         </a-layout-content>
@@ -15,7 +17,8 @@
 </template>
 
 <script setup lang="ts">
-import LayouHeader from './components/LayoutHeader/index.vue'
+import LayoutHeader from './components/LayoutHeader/index.vue'
+import LayoutSider from './components/LayoutSider/index.vue'
 </script>
 
 <style lang="scss">

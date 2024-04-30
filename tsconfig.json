@@ -9,7 +9,8 @@
  		"paths": {
  			"@/*": ["src/*"]
  		},
-
+    "esModuleInterop": true,
+    
     /* Bundler mode */
     "moduleResolution": "Node",
     // "allowImportingTsExtensions": true,
@@ -24,6 +25,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/mock/**/*.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
