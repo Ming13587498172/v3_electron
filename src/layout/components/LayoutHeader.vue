@@ -12,7 +12,26 @@
         <li>
           <QuestionCircleOutlined class="icon-style" />
         </li>
-        
+        <li>
+          <a-dropdown>
+            <a class="ant-dropdown-link">
+              <a-avatar size="large" src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />
+            </a>
+            <template #overlay>
+              <a-menu>
+                <a-menu-item>
+                  <a href="javascript:;">个人信息</a>
+                </a-menu-item>
+                <a-menu-item>
+                  <a href="javascript:;">关于</a>
+                </a-menu-item>
+                <a-menu-item>
+                  <a href="javascript:;">退出</a>
+                </a-menu-item>
+              </a-menu>
+            </template>
+          </a-dropdown>
+        </li>
       </ul>
     </div>
   </div>
