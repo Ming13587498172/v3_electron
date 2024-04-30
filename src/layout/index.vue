@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import LayouHeader from './components/LayoutHeader.vue'
+import LayouHeader from './components/LayoutHeader/index.vue'
 </script>
 
 <style lang="scss">
