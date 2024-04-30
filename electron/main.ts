@@ -1,5 +1,7 @@
 import { app, BrowserWindow } from 'electron'
 
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
+
 let win: BrowserWindow | null
 
 // 创建窗口

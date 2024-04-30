@@ -1,7 +1,9 @@
 <template>
   <div class="layout-box">
     <a-layout class="layout">
-      <a-layout-header class="layout-header">Header</a-layout-header>
+      <a-layout-header class="layout-header">
+        <LayouHeader></LayouHeader>
+      </a-layout-header>
       <a-layout>
         <a-layout-sider class="layout-sider">Sider</a-layout-sider>
         <a-layout-content class="layout-content">
@@ -13,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-
+import LayouHeader from './components/LayoutHeader.vue'
 </script>
 
 <style lang="scss">
