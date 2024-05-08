@@ -1,10 +1,10 @@
 <template>
-  <div class="home-box">
-    home
+  <div>
+    404
   </div>
 </template>
 
-<script setup lang="ts" name="Home">
+<script setup lang="ts" name="404">
 
 </script>
 

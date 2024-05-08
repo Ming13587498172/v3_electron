@@ -6,3 +6,4 @@ export const TestApi = () => {
     method: 'get'
   })
 }
+

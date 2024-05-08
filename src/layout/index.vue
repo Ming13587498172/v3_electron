@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="Layout">
 import LayoutHeader from './components/LayoutHeader/index.vue'
 import LayoutSider from './components/LayoutSider/index.vue'
 </script>
