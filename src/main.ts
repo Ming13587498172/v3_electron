@@ -4,6 +4,9 @@ import App from './App.vue'
 import router from '@/router/index'
 import pinia, { useRoutesStore } from '@/store'
 
+// 浏览器样式统一
+import 'normalize.css'
+// 取消默认样式
 import '@/styles/reset.scss'
 import * as Icons from "@ant-design/icons-vue"
 

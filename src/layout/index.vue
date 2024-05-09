@@ -47,9 +47,9 @@ import LayoutSider from './components/LayoutSider/index.vue'
     .ant-layout-content {
       height: 100%;
       min-height: 200px;
-      text-align: center;
-      color: #fff;
-      background-color: #108ee9;
+      // text-align: center;
+      // color: #fff;
+      // background-color: #108ee9;
     }
   }
 
