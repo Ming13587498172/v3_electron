@@ -1,8 +1,9 @@
 <template>
   <div class="whStyle echarts-groups">
     <div class="whStyle flex echarts-list">
-      <div :id="item.toString()" class="echarts-item" v-for="item in sl" :key="item">
-        <echarts-module></echarts-module>
+      <div class="echarts-item" v-for="item in options" :key="item"
+        :style="`width: calc(${100 / options.length}% - 12px);height: calc((100% - 12px) / ${Math.ceil(options.length / 4)});`" >
+        <echarts-module :option="item"></echarts-module>
       </div>
     </div>
   </div>
@@ -12,7 +13,7 @@
 import EchartsModule from '../EchartsModule/index.vue'
 
 defineProps<{
-  sl: number
+  options: []
 }>()
 
 </script>
@@ -25,8 +26,8 @@ defineProps<{
     align-items: unset;
 
     .echarts-item {
-      width: calc(25% - 12px);
-      height: calc(100% - 12px) / 4;
+      min-width: calc(25% - 12px);
+      // height: calc(100% - 12px) / 4;
       margin: 6px;
       border: 1px solid #000;
     }

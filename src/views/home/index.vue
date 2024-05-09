@@ -2,34 +2,7 @@
   <div ref="Home" class="whStyle box-padding home-box">
     <div class="whStyle flex echartDOM">
       <a-card hoverable class="whStyle">
-        <!-- <a-row>
-          <a-button type="dashed" size="mini">折现图</a-button>
-        </a-row>
-        <a-row>
-          <a-button type="dashed" size="mini">柱状图</a-button>
-        </a-row>
-        <a-row>
-          <a-button type="dashed" size="mini">饼图</a-button>
-        </a-row>
-        <a-row>
-          <a-button type="dashed" size="mini">地图</a-button>
-        </a-row>
-        <a-row>
-          <a-button type="dashed" size="mini">雷达图</a-button>
-        </a-row>
-        <a-row>
-          <a-button type="dashed" size="mini">水球图</a-button>
-        </a-row>
-        <a-row>
-          <a-button type="dashed" size="mini">仪表盘</a-button>
-        </a-row>
-        <a-row>
-          <a-button type="dashed" size="mini">K线图</a-button>
-        </a-row>
-        <a-row>
-          <a-button type="dashed" size="mini">漏斗图</a-button>
-        </a-row> -->
-        <a-button type="dashed" block size="mini" @click="handleEcharts">折线图</a-button>
+        <a-button type="dashed" block size="mini" @click="handleEcharts('line')">折线图</a-button>
         <a-button type="dashed" block size="mini" @click="handleEcharts">柱状图</a-button>
         <a-button type="dashed" block size="mini" @click="handleEcharts">饼图</a-button>
         <a-button type="dashed" block size="mini" @click="handleEcharts">地图</a-button>
@@ -59,29 +32,40 @@
 
     <!-- 对话框 -->
     <a-modal v-model:open="isModal" width="100%" wrap-class-name="full-modal" :footer="null" :destroyOnClose="true"
-      :getContainer="() => Home">
-      <echarts-groups :sl="6"></echarts-groups>
+      :getContainer="() => Home" :cancel="echartsOptions = []">
+      <echarts-groups :options="echartsOptions"></echarts-groups>
     </a-modal>
   </div>
 </template>
 
 <script setup lang="ts" name="Home">
-import { ref } from 'vue'
-import EchartsGroups from './components/EchartsGroups/index.vue'
+import { ref } from 'vue';
+import EchartsGroups from './components/EchartsGroups/index.vue';
 
 // ref 响应式对象
 const Home = ref(null)
 // 是否处于 Electron 环境
 let isElectron = window && window.process && window.process.versions && window.process.versions['electron']
+// echarts-option
+let echartsOptions = ref<any>([])
 // 对话框
 let isModal = ref<boolean>(false)
 
-console.log(isElectron)
-
-const handleEcharts = () => {
+const handleEcharts = (type: string) => {
   if (isElectron) {
 
   } else {
+    switch (type) {
+      case 'line':
+        import('./echarts-options/LineChart').then((res: any) => {
+          for (const key in res) {
+            echartsOptions.value.push(res[key])
+          }
+        })
+        break
+      default:
+        break
+    }
     isModal.value = true
   }
 }
@@ -111,8 +95,10 @@ const handleEcharts = () => {
       top: 0;
       padding-bottom: 0;
       margin: 0;
+
       .ant-modal-content {
         height: 100%;
+
         .ant-modal-body {
           height: 100%;
           padding: 40px 30px 0;
@@ -122,3 +108,5 @@ const handleEcharts = () => {
   }
 }
 </style>
+./echarts-options/line
+./echarts-options/LineChart
