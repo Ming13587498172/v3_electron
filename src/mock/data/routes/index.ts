@@ -1,5 +1,6 @@
 import { MockMethod } from 'vite-plugin-mock'
 
+/** 动态路由表 */
 let routes = [
   {
     id: 1,
@@ -11,13 +12,13 @@ let routes = [
     meta: { title: '基操' }
   }, {
     id: 2,
-   path: '/Monitor',
+    path: '/Monitor',
     name: 'Monitor',
     component: 'Monitor',
     meta: { title: '监控' }
   }, {
     id: 3,
-     path: '/Print',
+    path: '/Print',
     name: 'Print',
     component: 'Print',
     meta: { title: '打印' }

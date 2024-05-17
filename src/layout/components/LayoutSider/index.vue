@@ -2,7 +2,7 @@
   <div class="layout-sider-box">
     <a-layout-sider>
       <a-menu :selectedKeys="[route.path]" theme="dark" mode="inline">
-        <a-menu-item v-for="item in router.getRoutes().filter(obj => Object.keys(obj.meta).length !== 0)" :key="item.path">
+        <a-menu-item v-for="item in router.getRoutes().filter(obj => Object.keys(obj.meta).length !== 0 && !obj.meta.hidden && obj.meta.hidden !== true)" :key="item.path">
           <router-link :to="item.path">{{ item.meta!.title }}</router-link>
         </a-menu-item>
       </a-menu>

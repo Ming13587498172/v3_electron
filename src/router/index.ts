@@ -1,10 +1,10 @@
-import { createRouter, createWebHistory, NavigationGuardNext, RouteLocationNormalized, RouteRecordRaw } from "vue-router"
+import { createRouter, createWebHistory, createWebHashHistory, NavigationGuardNext, RouteLocationNormalized, RouteRecordRaw } from "vue-router"
+import Layout from '@/layout/index.vue'
 
 import { getRoutesAPI } from "@/api/routes"
 import { useRoutesStore } from '@/store'
 
-import Layout from '@/layout/index.vue'
-
+/** 静态路由表 */
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -21,6 +21,12 @@ const routes: Array<RouteRecordRaw> = [
     ]
   },
   {
+    path: '/index/EchartsGroups',
+    component: () => import('@/views/Home/components/EchartsGroups/index.vue'),
+    name: 'EchartsGroups',
+    meta: { title: 'Echarts图表', hidden: true }
+  },
+  {
     path: '/:pathMatch(.*)',
     component: () => import('@/views/error/404.vue'),
     name: '404',
@@ -28,11 +34,14 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  /** 判断是否为生产环境，生产 -> createWebHashHistory    开发 -> createWebHistory */
+  history: process.env.NODE_ENV != 'development' ? createWebHashHistory() : createWebHistory(),
   routes
 })
 
+/** 路由守卫 */
 router.beforeEach(async (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
+  console.log(from)
   if (to.path === '/login') {
     next()
   } else {

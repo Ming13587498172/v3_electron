@@ -4,6 +4,7 @@ import { resolve } from 'node:path'
 import {fileURLToPath, URL} from 'node:url'
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 import electron from 'vite-plugin-electron'
+// import renderer from "vite-plugin-electron-renderer"
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 // 引入pxtorem插件
@@ -16,9 +17,15 @@ export default defineConfig({
   plugins: [
     vue(),
     vueSetupExtend(),
-    electron({
-      entry: 'electron/main.ts',
-    }),
+    electron([
+      {
+        entry: 'electron/main.ts',
+      },
+      // {
+      //   entry: 'electron/preload.ts',
+      // },
+    ]),
+    // renderer(),
     Components({
       resolvers: [
         AntDesignVueResolver({
@@ -45,7 +52,8 @@ export default defineConfig({
     hmr: true,
     proxy: {
       '/api': {
-        target: '',
+        // target: '',
+        target: 'http://127.0.0.1:5173',
         changeOrigin: true,
         rewrite: path=>path.replace(/^\/api/, '')
       }

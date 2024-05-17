@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 /** 获取views下所有.vue文件 */
 // let modules = import.meta.glob('./../../views/**/*.vue')
 // let modules = import.meta.glob('/src/views/**/*.vue')
-let modules = import.meta.glob('../../../views/**/*.vue')
+// let modules = import.meta.glob('../../../views/**/*.vue')
 
 export const useRoutesStore = defineStore('routes', {
   state() {
@@ -28,12 +28,15 @@ export const useRoutesStore = defineStore('routes', {
           children: []
         }
         this.routesList.push(routeData)
-        this.routesList = this.routesList.reduce((result, obj) => {
-          if (!result.some(item => JSON.stringify(item) === JSON.stringify(obj))) {
-            result.push(obj)
-          }
-          return result
-        }, [])
+        // this.routesList = this.routesList.reduce((result, obj) => {
+        //   if (!result.some(item => JSON.stringify(item) === JSON.stringify(obj))) {
+        //     result.push(obj)
+        //   }
+        //   return result
+        // }, [])
+        this.routesList = this.routesList.filter((item, index, self) => {
+          return self.findIndex(t => JSON.stringify(t) === JSON.stringify(item)) === index
+        })
         // this.routesList.forEach(m => router.addRoute('Layout', m))
         /** 添加动态路由 */
         router.addRoute('Layout', routeData)
