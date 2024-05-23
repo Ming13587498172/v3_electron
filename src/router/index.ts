@@ -27,6 +27,12 @@ const routes: Array<RouteRecordRaw> = [
     meta: { title: 'Echarts图表', hidden: true }
   },
   {
+    path: '/index/DataVGroups',
+    component: () => import('@/views/Home/components/DataVGroups/index.vue'),
+    name: 'DataVGroups',
+    meta: { title: 'DataV图表', hidden: true }
+  },
+  {
     path: '/:pathMatch(.*)',
     component: () => import('@/views/error/404.vue'),
     name: '404',

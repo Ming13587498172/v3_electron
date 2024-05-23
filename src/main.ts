@@ -13,12 +13,16 @@ import * as Icons from "@ant-design/icons-vue"
 import '@/utils/flexible'
 import { getRoutesAPI } from './api/routes'
 
+// DataV
+import DataVVue3 from '@kjgl77/datav-vue3'
+
 const app = createApp(App)
 
 Object.keys(Icons).forEach((key: any) => {
   app.component(key, Icons[key as keyof typeof Icons])
 })
 
+app.use(DataVVue3)
 app.use(pinia)
 
 /** 解决动态路由跳转后刷新空白页/404 (异步操作) */ 

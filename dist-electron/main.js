@@ -32,6 +32,7 @@ const createWindows = (windowConfig, isMainWin) => {
   for (let i in group) {
     if (getWindow(Number(i)) && group[i].route === windowConfig.route) {
       console.log("窗口已经存在了");
+      getWindow(Number(i)).show();
       getWindow(Number(i)).focus();
       return win;
     }
@@ -74,10 +75,15 @@ const createWindows = (windowConfig, isMainWin) => {
   return win;
 };
 const listen = () => {
+  let timer;
   ipcMain.on("get-charts-options", (event, arg) => {
-    setTimeout(() => {
-      win.webContents.send("set-charts-options", arg);
-    }, 500);
+    if (arg === "clear") {
+      clearTimeout(timer);
+    } else {
+      timer = setTimeout(() => {
+        win.webContents.send("set-charts-options", arg);
+      }, 500);
+    }
   });
   ipcMain.on("open-new-window", (event, arg) => {
     createWindows(arg);

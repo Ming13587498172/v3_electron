@@ -106,6 +106,7 @@ export const createWindows = (windowConfig: IWindowsCfg, isMainWin?: boolean): B
   for (let i in group) {
     if (getWindow(Number(i)) && group[i].route === windowConfig.route) {
       console.log("窗口已经存在了")
+      getWindow(Number(i)).show()
       getWindow(Number(i)).focus()
       return win!
     }
@@ -178,13 +179,17 @@ export const createWindows = (windowConfig: IWindowsCfg, isMainWin?: boolean): B
 }
 
 export const listen = () => {
-  let timer: NodeJS.Timeout 
+  let timer: NodeJS.Timeout
   /** 传递 echarts的option数据 */
   ipcMain.on('get-charts-options', (event, arg) => {
-    timer = setTimeout(() => {
-      win!.webContents.send('set-charts-options', arg)
-    }, 500)
-    // clearTimeout(timer)
+    if (arg === 'clear') {
+      // timer._onTimeout -> 可通过 _onTimeout 属性的值是否为 null，来判断 setTimeout 是否被清除
+      clearTimeout(timer)
+    } else {
+      timer = setTimeout(() => {
+        win!.webContents.send('set-charts-options', arg)
+      }, 500)
+    }
   })
   /** 创建新窗口 */
   ipcMain.on('open-new-window', (event, arg) => {
