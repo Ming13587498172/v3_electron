@@ -25,17 +25,24 @@ onMounted(() => {
 })
 
 const getEchartsOptions = () => {
+  let timer
   if (window && window.process && window.process.versions && window.process.versions['electron']) {
     import("@vueuse/electron").then(({ useIpcRenderer }) => {
       ipcRenderer = useIpcRenderer()
     }).then(() => {
       ipcRenderer.on('set-charts-options', (_: any, args: any) => {
-        if (args !== undefined) options.value = JSON.parse(args)
+        if (args !== undefined) {
+          options.value = JSON.parse(args)
+          timer = setTimeout(() => {
+            ipcRenderer.send('get-charts-options', 'clear')
+          }, 200)
+        }
       })
     })
   } else {
     options.value = props.optionList as []
   }
+  clearTimeout(timer)
 }
 
 </script>
