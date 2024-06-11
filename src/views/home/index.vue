@@ -282,14 +282,14 @@ const importOptions = async (type: string) => {
         })
       })
       break
-      case 'activeRingChart': 
+    case 'activeRingChart': 
       await import('./dataV-attribute/activeRingChart').then((res: any) => {
         Object.keys(res).forEach(key => {
           dataVAttribute.value.push(res[key])
         })
       })
       break
-      case 'digitalFlop': 
+    case 'digitalFlop': 
       await import('./dataV-attribute/digitalFlop').then((res: any) => {
         Object.keys(res).forEach(key => {
           dataVAttribute.value.push(res[key])
@@ -355,5 +355,3 @@ const close = () => {
   }
 }
 </style>
-./echarts-options/line
-./echarts-options/LineChart

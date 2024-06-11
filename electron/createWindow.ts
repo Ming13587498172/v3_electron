@@ -149,6 +149,7 @@ export const createWindows = (windowConfig: IWindowsCfg, isMainWin?: boolean): B
   // 设置打开窗口的路径
   if (process.env.NODE_ENV != 'development') {  //生产环境下 加载
     /** 如果是线上环境，则加载html文件的路径，然后拼接路由 */
+    win.webContents.openDevTools()
     // win.loadFile('./dist/index.html', { hash: windowConfig.route + param })
     win.loadFile('./dist/index.html', { hash: windowConfig.route })
     // win.loadFile('./dist/index.html')

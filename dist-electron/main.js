@@ -59,6 +59,7 @@ const createWindows = (windowConfig, isMainWin) => {
   }
   windowConfig.id = win.id;
   if (process.env.NODE_ENV != "development") {
+    win.webContents.openDevTools();
     win.loadFile("./dist/index.html", { hash: windowConfig.route });
   } else {
     win.webContents.openDevTools();
