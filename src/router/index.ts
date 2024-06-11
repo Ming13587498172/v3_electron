@@ -41,13 +41,17 @@ const routes: Array<RouteRecordRaw> = [
 
 const router = createRouter({
   /** 判断是否为生产环境，生产 -> createWebHashHistory    开发 -> createWebHistory */
-  history: process.env.NODE_ENV != 'development' ? createWebHashHistory() : createWebHistory(),
+  history: process.env.NODE_ENV !== 'development' ? createWebHashHistory() : createWebHistory(),
   routes
 })
 
 /** 路由守卫 */
-router.beforeEach(async (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
-  console.log(from)
+/** 
+ * @ to
+ * @ from
+ * @ next
+ */
+router.beforeEach(async (to: RouteLocationNormalized, _: RouteLocationNormalized, next: NavigationGuardNext) => {
   if (to.path === '/login') {
     next()
   } else {

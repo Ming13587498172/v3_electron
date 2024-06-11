@@ -28,6 +28,12 @@ let routes = [
     name: 'Three',
     component: 'Three',
     meta: { title: 'THREE' }
+  }, {
+    id: 5,
+    path: '/ImportStudy',
+    name: 'ImportStudy',
+    component: 'ImportStudy',
+    meta: { title: '导入' }
   }
 ]
 
