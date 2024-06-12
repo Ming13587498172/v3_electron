@@ -10,6 +10,7 @@
  			"@/*": ["src/*"]
  		},
     "esModuleInterop": true,
+
     
     /* Bundler mode */
     "moduleResolution": "Node",
@@ -17,6 +18,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    
+    // tsx
+    "jsxImportSource": "vue",
     "jsx": "preserve",
 
     /* Linting */

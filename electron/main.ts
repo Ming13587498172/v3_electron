@@ -83,6 +83,8 @@ app.on("window-all-closed", () => {
   }
 })
 
+// app.setPath('userData', path.join(process.cwd(), 'data'))
+
 // app.on("activate", () => {
 //   if (BrowserWindow.getAllWindows().length === 0) createWindow()
 // })
