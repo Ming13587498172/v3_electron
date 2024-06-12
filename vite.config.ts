@@ -42,13 +42,13 @@ const getNetworkIp = () => {
 export default defineConfig(({mode, command}) => {
   // 获取.env文件里定义的环境变量
   const env = loadEnv(mode, process.cwd())
-  env.VITE_GET_IP = `http://${getNetworkIp()}:80`
+  // env.VITE_GET_IP = `http://${getNetworkIp()}:80`
   return {
-    define: {
-      'process.env': {
-        'VITE_GET_IP': `http://${getNetworkIp()}:80`
-      },
-    },
+    // define: {
+    //   'process.env': {
+    //     'VITE_GET_IP': `http://${getNetworkIp()}:80`
+    //   },
+    // },
     plugins: [
       vue(),
       vueSetupExtend(),
