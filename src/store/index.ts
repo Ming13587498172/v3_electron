@@ -10,3 +10,4 @@ export default pinia
 
 // 模块统一导出
 export * from './modules/routes'
+export * from './modules/piniaStudy'

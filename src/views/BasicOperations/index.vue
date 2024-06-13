@@ -7,23 +7,23 @@
           <template #default>
             使用默认插槽
             <br />
-            {{ 
-              `<template #default >
+            {{
+              `<template #default>
               插槽内容
               < /template>`
             }}
-          </template>
+            </template>
         </DefaultSlot>
         <NameSlot>
           <template #nameSlot>
             使用具名插槽
             <br />
             {{
-              `<template #nameSlot >
+              `<template #nameSlot>
               插槽内容
               < /template>`
             }}
-          </template>
+            </template>
         </NameSlot>
         <ScopeSlot>
           <template #scopeSlot="{ item, data }">
@@ -55,7 +55,8 @@
         <p>子组件数据(emit)：{{ childrenData }}</p>
         <p>子组件数据(v-model)：{{ VModelVal }}</p>
         <p>子组件数据(ref)：{{ refVal }}</p>
-        <ChildrenComm ref="child" :toChildren="fatherData" v-model:VModelVal="VModelVal" :a="a" :b="b" :c="c" @to-father="toFatherChange"></ChildrenComm>
+        <ChildrenComm ref="child" :toChildren="fatherData" v-model:VModelVal="VModelVal" :a="a" :b="b" :c="c"
+          @to-father="toFatherChange"></ChildrenComm>
       </div>
       <div class="content-item hide-scrollbar">
         <IndexTsx></IndexTsx>
@@ -80,30 +81,43 @@
       <div class="content-item hide-scrollbar">
         <DataIndexTsx></DataIndexTsx>
       </div>
-      <div class="content-item hide-scrollbar">12</div>
-      <div class="content-item hide-scrollbar">13</div>
-      <div class="content-item hide-scrollbar">14</div>
+      <div class="content-item hide-scrollbar">
+        <PiniaStudy></PiniaStudy>
+      </div>
+      <div class="content-item hide-scrollbar">
+        <TodoPinia></TodoPinia>
+      </div>
+      <div class="content-item hide-scrollbar">
+        <HooksStudy></HooksStudy>
+      </div>
       <div class="content-item hide-scrollbar">15</div>
+      <div class="content-item hide-scrollbar">16</div>
+      <div class="content-item hide-scrollbar">17</div>
+      <div class="content-item hide-scrollbar">18</div>
+      <div class="content-item hide-scrollbar">19</div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts" name="BasicOperations">
 import { computed, onMounted, ref, watch } from 'vue'
+import ChildrenComm from './commStudy/childrenComm.vue'
+import HooksStudy from './hooksStudy/index.vue'
+import PiniaStudy from './piniaStudy/index.vue'
+import TodoPinia from './piniaStudy/todoPinia.vue'
 import DefaultSlot from './slotStudy/defaultSlot.vue'
 import NameSlot from './slotStudy/nameSlot.vue'
 import ScopeSlot from './slotStudy/scopeSlot.vue'
-import ChildrenWatch from './watchStudy/ChildrenWatch.vue'
-import ChildrenComm from './commStudy/childrenComm.vue'
+import DataIndexTsx from './tsxStudy/dataIndexTsx'
+import EventTsx from './tsxStudy/eventTsx'
+import FatherTsx from './tsxStudy/fatherTsx'
+import GrammarTsx from './tsxStudy/grammarTsx'
 import IndexTsx from './tsxStudy/indexTsx'
 import RenderTsx from './tsxStudy/renderTsx'
 import SetupTsx from './tsxStudy/setupTsx'
-import GrammarTsx from './tsxStudy/grammarTsx'
-import StyleTsx from './tsxStudy/styleTsx'
-import FatherTsx from './tsxStudy/fatherTsx'
-import EventTsx from './tsxStudy/eventTsx'
 import SlotTsx from './tsxStudy/slotTsx'
-import DataIndexTsx from './tsxStudy/dataIndexTsx'
+import StyleTsx from './tsxStudy/styleTsx'
+import ChildrenWatch from './watchStudy/ChildrenWatch.vue'
 
 // 基础监听
 let watchVal = ref('')
@@ -112,7 +126,7 @@ watch(watchVal, (newVal, oldVal) => {
   watchContent.value = `内容由--${oldVal === '' ? '空内容' : oldVal}--变为--${newVal}`
 })
 const changeCount = () => {
-  count.value.a ++
+  count.value.a++
 }
 
 // 深度监听
@@ -159,18 +173,23 @@ let c = ref(3)
 <style scoped lang="scss">
 .basic-operations-box {
   .hide-scrollbar {
-    overflow: auto; /* 启用滚动 */
-    -ms-overflow-style: none; /* IE 和 Edge */
-    scrollbar-width: none; /* Firefox */
+    overflow: auto;
+    /* 启用滚动 */
+    -ms-overflow-style: none;
+    /* IE 和 Edge */
+    scrollbar-width: none;
+    /* Firefox */
   }
-  
+
   /* 兼容所有浏览器的通用方法 */
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
   .content {
     display: flex;
     flex-wrap: wrap;
+
     .content-item {
       width: 30%;
       margin: 1% calc(10% / 3 / 2);
