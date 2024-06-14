@@ -1,15 +1,12 @@
 /**
- * @params {Function} fn  需要防抖的函数 delay 防抖时间
- * @returns {Function} debounce 防抖函数
- * @example
+ * 防抖 Hooks
+ * @param fn 需要防抖的函数
+ * @param delay 防抖的时间
  */
-export const useDebounce = (callback: (val: any) => void, delay: number): Function => {
+export const useDebounce = (fn: Function, delay: number) => {
   let timer: NodeJS.Timeout | null = null
-  const debounceFun = (val: any) => {
-    if (timer) clearTimeout(timer)
-    timer = setTimeout(() => {
-      callback(val)
-    }, delay)
-  }
-  return debounceFun
+  if (timer) clearTimeout(timer)
+  timer = setTimeout(() => {
+    fn.apply(this)
+  }, delay) 
 }
