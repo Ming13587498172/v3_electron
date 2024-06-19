@@ -4,6 +4,9 @@ import App from './App.vue'
 import router from '@/router/index'
 import pinia, { useRoutesStore } from '@/store'
 
+// 自定义指令
+import directive from './directives/index'
+
 // 浏览器样式统一
 import 'normalize.css'
 // 取消默认样式
@@ -17,6 +20,7 @@ import { getRoutesAPI } from './api/routes'
 import DataVVue3 from '@kjgl77/datav-vue3'
 
 const app = createApp(App)
+directive(app)  // 自定义指令
 
 Object.keys(Icons).forEach((key: any) => {
   app.component(key, Icons[key as keyof typeof Icons])

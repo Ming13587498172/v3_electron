@@ -96,8 +96,13 @@
       <div class="content-item hide-scrollbar">
         <DynamicStudy></DynamicStudy>
       </div>
-      <div class="content-item hide-scrollbar">17</div>
+      <div class="content-item hide-scrollbar">
+        <DirectiveStudy></DirectiveStudy>
+      </div>
       <div class="content-item hide-scrollbar">18</div>
+      <div class="content-item hide-scrollbar">19</div>
+      <div class="content-item hide-scrollbar">20</div>
+      <div class="content-item hide-scrollbar">21</div>
     </div>
   </div>
 </template>
@@ -123,6 +128,7 @@ import StyleTsx from './tsxStudy/styleTsx'
 import ChildrenWatch from './watchStudy/ChildrenWatch.vue'
 import ScssStudy from './scssStudy/index.vue'
 import DynamicStudy from './dynamicStudy/index.vue'
+import DirectiveStudy from './directivestudy/index.vue'
 
 // 基础监听
 let watchVal = ref('')
