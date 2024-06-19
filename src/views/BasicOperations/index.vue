@@ -93,7 +93,9 @@
       <div class="content-item hide-scrollbar">
         <ScssStudy></ScssStudy>
       </div>
-      <div class="content-item hide-scrollbar">16</div>
+      <div class="content-item hide-scrollbar">
+        <DynamicStudy></DynamicStudy>
+      </div>
       <div class="content-item hide-scrollbar">17</div>
       <div class="content-item hide-scrollbar">18</div>
     </div>
@@ -120,6 +122,7 @@ import SlotTsx from './tsxStudy/slotTsx'
 import StyleTsx from './tsxStudy/styleTsx'
 import ChildrenWatch from './watchStudy/ChildrenWatch.vue'
 import ScssStudy from './scssStudy/index.vue'
+import DynamicStudy from './dynamicStudy/index.vue'
 
 // 基础监听
 let watchVal = ref('')

@@ -6,3 +6,10 @@ export const getRoutesAPI = () => {
     method: 'get'
   })
 }
+
+export const getDynamicRoutesAPI = () => {
+  return request({
+    url: '/api/dynamicRoutes',
+    method: 'get'
+  })
+}
