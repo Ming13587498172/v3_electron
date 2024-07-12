@@ -102,7 +102,9 @@
       <div class="content-item hide-scrollbar">
         <FormatDateStudy></FormatDateStudy>
       </div>
-      <div class="content-item hide-scrollbar">19</div>
+      <div class="content-item hide-scrollbar">
+        <TsTStudy></TsTStudy>
+      </div>
       <div class="content-item hide-scrollbar">20</div>
       <div class="content-item hide-scrollbar">21</div>
     </div>
@@ -132,6 +134,7 @@ import ScssStudy from './scssStudy/index.vue'
 import DynamicStudy from './dynamicStudy/index.vue'
 import DirectiveStudy from './directivestudy/index.vue'
 import FormatDateStudy from './formatDateStudy/index.vue'
+import TsTStudy from './tsTStudy/index.vue'
 
 // 基础监听
 let watchVal = ref('')
